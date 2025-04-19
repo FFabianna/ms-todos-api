@@ -33,6 +33,7 @@ class TodoController {
         data.lastInsertedID++
         this._setTodoData(req.user.username, data)
 
+        console.log('Send to redis')
         this._logOperation(OPERATION_CREATE, req.user.username, todo.id)
 
         res.json(todo)
@@ -51,6 +52,7 @@ class TodoController {
     }
 
     _logOperation (opName, username, todoId) {
+        console.log('channel', this._logChannel)
         this._tracer.scoped(() => {
             const traceId = this._tracer.id;
             this._redisClient.publish(this._logChannel, JSON.stringify({
