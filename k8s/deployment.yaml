@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: todosapi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: todosapi
+  template:
+    metadata:
+      labels:
+        app: todosapi
+    spec:
+      containers:
+        - name: todosapi
+          image: automationrepository.azurecr.io/todosapi-image
+          ports:
+            - containerPort: 8082
