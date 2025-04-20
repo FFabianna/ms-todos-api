@@ -35,6 +35,8 @@ const redisClient = require("redis").createClient({
   }        
 });
 
+console.log('redis', redisClient);
+
 redisClient.on('connect', () => {
   console.log('Connected to Redis');
 });
