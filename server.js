@@ -13,7 +13,7 @@ const zipkinMiddleware = require('zipkin-instrumentation-express').expressMiddle
 
 const logChannel = process.env.REDIS_CHANNEL || 'log_channel';
 const redisClient = require("redis").createClient({
-  host: process.env.REDIS_HOST || 'localhost',
+  host: process.env.REDIS_HOST || 'redis',
   port: process.env.REDIS_PORT || 6379,
   password: process.env.REDIS_PASSWORD || '',
   tls:{
