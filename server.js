@@ -30,6 +30,7 @@ const redisClient = require("redis").createClient({
           console.log('reattemtping to connect to redis, attempt #' + options.attempt)
           return undefined;
       }
+      console.log('options', options);
       return Math.min(options.attempt * 100, 2000);
   }        
 });
