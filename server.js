@@ -33,6 +33,15 @@ const redisClient = require("redis").createClient({
       return Math.min(options.attempt * 100, 2000);
   }        
 });
+
+redisClient.on('connect', () => {
+  console.log('Connected to Redis');
+});
+
+redisClient.on('error', (err) => {
+  console.error('Redis connection error: ', err);
+});
+
 const port = process.env.TODO_API_PORT || 8082
 const jwtSecret = process.env.JWT_SECRET || "foo"
 
