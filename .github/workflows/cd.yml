@@ -43,6 +43,9 @@ jobs:
       run: |
         kubectl apply -f k8s/deployment.yaml
         kubectl apply -f k8s/service.yaml
+        kubectl apply -f k8s/hpa.yaml
+        kubectl apply -f k8s/limitrange.yaml
+        kubectl apply -f k8s/resourcequota.yaml
 
     - name: Ensure latest image is deployed
       run: |
